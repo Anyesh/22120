@@ -1,11 +1,12 @@
-# :classical_building: [22120](https://github.com/c9fe/22120) ![npm downloads](https://img.shields.io/npm/dt/archivist1?label=npm%20downloads) ![binary downloads](https://img.shields.io/github/downloads/c9fe/22120/total?label=binary%20downloads) [![latest package](https://img.shields.io/github/v/release/c9fe/22120?label=latest%20release)](https://github.com/c9fe/22120/releases)
-
-[![visitors+++](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fc9fe%2F22120&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%28today%2Ftotal%29%20visitors%2B%2B%2B%20since%20Oct%2027%202020&edge_flat=false)](https://hits.seeyoufarm.com)
+# :classical_building: [22120](https://github.com/c9fe/22120) ![kindness](https://api.kindspeech.org/v1/badge) ![npm downloads](https://img.shields.io/npm/dt/archivist1?label=npm%20downloads) ![binary downloads](https://img.shields.io/github/downloads/c9fe/22120/total?label=binary%20downloads) [![latest package](https://img.shields.io/github/v/release/c9fe/22120?label=latest%20release)](https://github.com/c9fe/22120/releases) [![visitors+++](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fc9fe%2F22120&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%28today%2Ftotal%29%20visitors%2B%2B%2B%20since%20Oct%2027%202020&edge_flat=false)](https://hits.seeyoufarm.com)
 
 :classical_building: - An archivist browser controller that caches everything you browse, a library server with full text search to serve your archive. 
 
-**News - new binaries** 
+If you use or like this, don't forget to show your appreciation by [starring this repo](https://github.com/i5ik/22120/stargazers), or [following me](https://github.com/i5ik) 😹
 
+**News - 22120 plus interview featured in [Console - the open source newsletter](https://console.substack.com/p/console-28)**
+
+<span id=toc></span>
 ----------------
 - [Overview](#classical_building-22120---)
   * [License](#license)
@@ -18,14 +19,17 @@
   * [Why not WARC (or another format like MHTML) ?](#why-not-warc-or-another-format-like-mhtml-)
   * [How it works](#how-it-works)
   * [FAQ](#faq)
-    + [Can I use this with a browser that's not Chrome-based?](#can-i-use-this-with-a-browser-that-s-not-chrome-based)
+    + [Do I need to download something?](#do-i-need-to-download-something)
+    + [Can I use this with a browser that's not Chrome-based?](#can-i-use-this-with-a-browser-thats-not-chrome-based)
     + [How does this interact with Ad blockers?](#how-does-this-interact-with-ad-blockers)
     + [How secure is running chrome with remote debugging port open?](#how-secure-is-running-chrome-with-remote-debugging-port-open)
     + [Is this free?](#is-this-free)
-    + [What's the roadmap?](#what-s-the-roadmap)
+    + [What if it can't find my chrome?](#what-if-it-cant-find-my-chrome)
+    + [What's the roadmap?](#whats-the-roadmap)
     + [What about streaming content?](#what-about-streaming-content)
     + [Can I black list domains to not archive them?](#can-i-black-list-domains-to-not-archive-them)
     + [Is there a DEBUG mode for troubleshooting?](#is-there-a-debug-mode-for-troubleshooting)
+    + [Can I version the archive?](#can-i-version-the-archive)
     + [Can I change the archive path?](#can-i-change-the-archive-path)
     + [Can I change this other thing?](#can-i-change-this-other-thing)
 
@@ -33,13 +37,9 @@
 
 ## License 
 
-Copyright (c) 2018, 2020, Dosyago and/or its affiliates. All rights reserved.
+This is released into the public domain.
 
-This is a release of 22120, a web archiver.
-
-License information can be found in the LICENSE file.
-
-This software is dual-licensed. For information about commercial licensing, see [Dosyago Commercial License for OEMs, ISVs and VARs](https://github.com/dosyago/dual-licensing).
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ## About
 
@@ -49,15 +49,20 @@ Save your browsing, then switch off the net and go to `http://localhost:22120` a
 
 **warning: if you have Chrome open, it will close it automatically when you open 22120, and relaunch it. You may lose any unsaved work.**
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ## Get 22120
 
 3 ways to get it:
 
 1. Get binary from the [releases page.](https://github.com/c9fe/22120/releases), or
-2. Run with npx: `npx archivist1`, or 
+2. Run with npx: `npx archivist1@latest`, or
+    - `npm i -g archivist1@latest && archivist1`
 3. Clone this repo and run as a Node.JS app: `npm i && npm start` 
 
 Also, coming soon is a Chrome Extension.
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ## Using
 
@@ -66,11 +71,19 @@ Also, coming soon is a Chrome Extension.
 Go to http://localhost:22120 in your browser, 
 and follow the instructions. 
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ### Exploring your 22120 archive
 
-Archive will be located in `$your_user_home_directory/22120-arc/public/library`
+Archive will be located in `22120-arc/public/library`\*
 
 But it's not public, don't worry!
+
+You can also check out the archive index, for a listing of every title in the archive. The index is accessible from the control page, which by default is at [http://localhost:22120](http://localhost:22120) (unless you changed the port).
+
+\**Note:`22120-arc` is the archive root of a single archive, and by defualt it is placed in your home directory. But you can change the parent directory for `22120-arc` to have multiple archvies.*
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ## Format
 
@@ -80,19 +93,21 @@ The archive format is:
 
 Inside the JSON file, is a JSON object with headers, response code, key and a base 64 encoded response body.
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ## Why not WARC (or another format like MHTML) ?
 
 **The case for the 22120 format.**
 
-Other formats save translations of the resources you archive. They create modifications, such as altering the internal structure of the HTML, changing hyperlinks and URLs into "flat" embedded data URIs, and require other "hacks* in order to save a "perceptually similar" copy of the archived resource.
+Other formats (like MHTML and SingleFile) save translations of the resources you archive. They create modifications, such as altering the internal structure of the HTML, changing hyperlinks and URLs into "flat" embedded data URIs, or local references, and require other "hacks* in order to save a "perceptually similar" copy of the archived resource.
 
-22120 throws all that out, and calls rubbish on it. 22120 saves a *verbatim* **high-fidelity** copy of the resources your archive. It does not alter their internal structure in any way. Instead it records each resource in its own metadata file.
+22120 throws all that out, and calls rubbish on it. 22120 saves a *verbatim* **high-fidelity** copy of the resources your archive. It does not alter their internal structure in any way. Instead it records each resource in its own metadata file. In that way it is more similar to HAR and WARC, but still radically different. Compared to WARC and HAR, our format is radically simplified, throwing out most of the metadata information and unnecessary fields these formats collect.
 
 **Why?**
 
-At 22120, we believe in the resources and in verbatim copies. We don't annoint ourselves as all knowing enough to modify the resource source of truth before we archive it, just so it can "fit the format* we choose. We don't believe we should be modifying or altering resources we archive. We belive we should save them exactly as they were presented. We believe the format should fit (or at least accommodate, and be suited to) the resource, not the other way around. We don't believe in conflating **metadata** with **content**; so we separate them. We believe separating metadata and content, and keeping the content pure and altered throughout the archiving process is not only the right thing to do, it simplifies every part of the audit trail, because we know that the modifications between archived copies of a resource of due to changes to the resources themselves, not artefacts of the format or archiving process.
+At 22120, we believe in the resources and in verbatim copies. We don't annoint ourselves as all knowing enough to modify the resource source of truth before we archive it, just so it can "fit the format* we choose. We don't believe we need to decorate with obtuse and superfluous metadata. We don't believe we should be modifying or altering resources we archive. We belive we should save them exactly as they were presented. We believe in simplicity. We believe the format should fit (or at least accommodate, and be suited to) the resource, not the other way around. We don't believe in conflating **metadata** with **content**; so we separate them. We believe separating metadata and content, and keeping the content pure and altered throughout the archiving process is not only the right thing to do, it simplifies every part of the audit trail, because we know that the modifications between archived copies of a resource of due to changes to the resources themselves, not artefacts of the format or archiving process.
 
-Both WARC and MHTML require mutilatious modifications of the resources so that the resources can be "forced to fit" the format. At 22120, we believe this is not required (and in any case should never be performed). We see it as akin to lopping off the arms of a Roman statue in order to fit it into a presentation and security display box. How ridiculous! The web may be a more "pliable" medium but that does not mean we should treat it without respect for its inherent content. 
+Both SingleFile and MHTML require mutilatious modifications of the resources so that the resources can be "forced to fit" the format. At 22120, we believe this is not required (and in any case should never be performed). We see it as akin to lopping off the arms of a Roman statue in order to fit it into a presentation and security display box. How ridiculous! The web may be a more "pliable" medium but that does not mean we should treat it without respect for its inherent content. 
 
 **Why is changing the internal structure of resources so bad?**
 
@@ -104,33 +119,57 @@ In our view, the internal structure of the resource as presented, *is the cannon
 
 In short, the web is an *online* medium, and it should be archived and presented in the same fashion. 22120 archives content exactly as it is received and presented by a browser, and it also replays that content exactly as if the resource were being taken from online. Yes, it requires a browser for this exercise, but that browser need not be connected to the internet. It is only natural that viewing a web resource requires the web browser. And because of 22120 the browser doesn't know the difference! Resources presented to the browser form a remote web site, and resources given to the browser by 22120, are seen by the browser as ***exactly the same.*** This ensures that the people viewing the archive are also not let down and are given the change to have the exact same experience as if they were viewing the resource online. 
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ## How it works
 
 Uses DevTools protocol to intercept all requests, and caches responses against a key made of (METHOD and URL) onto disk. It also maintains an in memory set of keys so it knows what it has on disk. 
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ## FAQ
+
+### Do I need to download something?
+
+Yes. But....If you like **22120**, you might love the clientless hosted version coming in future. You'll be able to build your archives online from any device, without any download, then download the archive to run on any desktop. You'll need to sign up to use it, but you can jump the queue and sign up [today](https://dosyago.com).
 
 ### Can I use this with a browser that's not Chrome-based? 
 
-No.
+No. 
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ### How does this interact with Ad blockers?
 
 Interacts just fine. The things ad blockers stop will not be archived.
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ### How secure is running chrome with remote debugging port open?
 
-Seems pretty secure. It's not exposed to the public internet, and pages you load that tried to use it cannot use the protocol for anything (except to open a new tab, which they can do anyway). 
+Seems pretty secure. It's not exposed to the public internet, and pages you load that tried to use it cannot use the protocol for anything (except to open a new tab, which they can do anyway). It seems there's a potential risk from malicious browser extensions, but we'd need to confirm that and if that's so, work out blocks. See [this useful security related post](https://github.com/c9fe/22120/issues/67) for some info.
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ### Is this free?
 
-Yes this is totally free to download and use. It's also open source so do what you want with it.
+Yes this is totally free to download and use. It's also open source (under AGPL-3.0) so do what you want with it. For more information about licensing, see the [license section](#license). 
+
+<p align=right><small><a href=#toc>Top</a></small></p>
+
+### What if it can't find my chrome?
+
+See this useful [issue](https://github.com/c9fe/22120/issues/68).
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ### What's the roadmap?
 
 - Full text search 
 - Library server to serve archive publicly.
 - Distributed p2p web browser on IPFS
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ### What about streaming content?
 
@@ -142,13 +181,18 @@ The following are probably hard (and I haven't thought much about):
 
 Probably some way to do this tho.
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ### Can I black list domains to not archive them?
 
-Yes! Put any domains into `$HOME/22120-arc/no.json`, eg:
+Yes! Put any domains into `22120-arc/no.json`\*, eg:
 
 ```json
 [
-  "*.google.com",
+  "*.horribleplantations.com",
+  "*.cactusfernfurniture.com",
+  "*.gustymeadows.com",
+  "*.nytimes.com",
   "*.cnn.co?"
 ]
 ```
@@ -157,6 +201,10 @@ Will not cache any resource with a host matching those. Wildcards:
 
 - `*` (0 or more anything) and 
 - `?` (0 or 1 anything) 
+
+\**Note: the `no` file is per-archive. `22120-arc` is the archive root of a single archive, and by defualt it is placed in your home directory. But you can change the parent directory for `22120-arc` to have multiple archvies, and each archive requires its own `no` file, if you want a blacklist in that archive.*
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ### Is there a DEBUG mode for troubleshooting?
 
@@ -168,9 +216,19 @@ So for example in posix systems:
 export DEBUG_22120=True
 ```
 
+<p align=right><small><a href=#toc>Top</a></small></p>
+
+### Can I version the archive?
+
+Yes! But you need to use `git` for versioning. Just initiate a git repo in your archive repository. And when you want to save a snapshot, make a new git commit.
+
+<p align=right><small><a href=#toc>Top</a></small></p>
+
 ### Can I change the archive path?
 
 Yes, there's a control for changing the archive path in the control page: http://localhost:22120
+
+<p align=right><small><a href=#toc>Top</a></small></p>
 
 ### Can I change this other thing?
 
@@ -178,4 +236,5 @@ There's a few command line arguments. You'll see the format printed as the first
 
 For other things you can examine the source code. 
 
+<p align=right><small><a href=#toc>Top</a></small></p>
 

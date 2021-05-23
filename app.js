@@ -16,12 +16,11 @@ const CHROME_OPTS = !NO_SANDBOX ? [
   '--no-sandbox'
 ];
 const LAUNCH_OPTS = {
+  logLevel: DEBUG ? 'verbose' : 'silent',
   port: chrome_port, 
   chromeFlags:CHROME_OPTS, 
   userDataDir:false, 
-  /*
   startingUrl: `http://localhost:${args.server_port}`,
-  */
   ignoreDefaultFlags: true
 }
 const KILL_ON = {
@@ -65,7 +64,13 @@ async function start() {
     await sleep(1000);
 
     console.log(`Launching chrome...`);
-    await ChromeLaunch(LAUNCH_OPTS);
+    try {
+      await ChromeLaunch(LAUNCH_OPTS);
+    } catch(e) {
+      console.log(`Could not launch chrome.`);
+      DEBUG && console.info('Chrome launch error:', e);
+      process.exit(1);
+    }
     console.log(`Chrome started.`);
 
     console.log(`Waiting 1 second...`);
